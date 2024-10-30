@@ -30,11 +30,14 @@ public class PrimeNumbers {
     }
 
     public static boolean[] getPrimeNumbers(int number) {
+        if(number<=1)
+            return new boolean[0];
+
         boolean[] primeNumbers = new boolean[number + 1];
         for (int i =2 ; i*i <= number; i++)
-            if(primeNumbers[i] == false)
+            if(!primeNumbers[i])
                 for (int j = i*i; j <= number; j += i)
-                    primeNumbers[j] = true;
+                    primeNumbers[j] = true; // mark none prime numbers
 
         return primeNumbers;
     }
@@ -42,6 +45,10 @@ public class PrimeNumbers {
     public static void sievePrintPrimeNumbers(int number) {
         System.out.println("\nSieve Print Prime Numbers");
         boolean[] primeNumbers = getPrimeNumbers(number);
+
+        if(primeNumbers.length==0)
+            System.out.println("Please enter number greater than 1");
+
         for (int i = 2; i <= number; i++) {
             if(primeNumbers[i]==false)
                 System.out.print(i + " ");
@@ -51,7 +58,8 @@ public class PrimeNumbers {
 
     public static void main(String[] args) {
 
-        printPrimeNumbers(100);
-        sievePrintPrimeNumbers(100);
+        printPrimeNumbers(3);
+        sievePrintPrimeNumbers(1);
+        sievePrintPrimeNumbers(2);
     }
 }

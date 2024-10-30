@@ -17,6 +17,13 @@ public class PrimeNumbersTest {
         assertTrue(PrimeNumbers.isPrime(number), number + " should be prime");
     }
 
+    @ParameterizedTest
+    @MethodSource("primeNumbersProvider")
+    @DisplayName("Test prime numbers")
+    public void testSievePrimeNumbers(int number) {
+        assertTrue(PrimeNumbers.isPrime(number), number + " should be prime");
+    }
+
     static Stream<Arguments> primeNumbersProvider() {
         return Stream.of(
                 Arguments.of(2),
