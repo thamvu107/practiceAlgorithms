@@ -1,5 +1,8 @@
 package array;
 
+import static utils.ArrayUtils.printArray;
+import static utils.ArrayUtils.swap;
+
 public class SelectionSortDemo {
     public static void main(String[] args) {
         int[] arr = {5, 4, 3, 2, 1, 6, 8};
@@ -9,13 +12,6 @@ public class SelectionSortDemo {
         System.out.println("After sorting");
         selectionSort(arr);
         printArray(arr);
-    }
-
-    private static void printArray(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + "\t");
-        }
-        System.out.println();
     }
 
     public static void selectionSort(int[] arr) {
@@ -32,10 +28,6 @@ public class SelectionSortDemo {
         }
     }
 
-    private static void swap(int[] arr, int min, int i) {
-        int temp = arr[min];
-        arr[min] = arr[i];
-        arr[i] = temp;
-    }
+
 
 }

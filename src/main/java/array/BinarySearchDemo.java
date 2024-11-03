@@ -9,11 +9,18 @@ public class BinarySearchDemo {
         int target = 5;
         int found = binarySearch(arr, target);
 
-        if(found == -1) {
+        if (found == -1) {
             System.out.println("Element not found");
         } else {
             System.out.println("Element found at index " + found);
         }
+
+
+        int[] sortedNumbers = {1, 3, 5, 7, 9, 11, 13, 15}; // sorted array
+        int targetNumber = 4;
+
+        boolean foundNumber = binarySearch(targetNumber, sortedNumbers, 0, sortedNumbers.length - 1);
+        System.out.println("Target found: " + foundNumber);  // Should print true if target is in array
     }
 
 
@@ -33,5 +40,16 @@ public class BinarySearchDemo {
             }
         }
         return -1;
+    }
+
+    public static boolean binarySearch(int x, int[] sortedNumbers, int start, int end) {
+        if (start <= end) {
+            int mid = (end - start) / 2 + start;
+            if (sortedNumbers[mid] == x) return true;
+            if (sortedNumbers[mid] > x)
+                return binarySearch(x, sortedNumbers, start, mid - 1);
+            return binarySearch(x, sortedNumbers, mid + 1, end);
+        }
+        return false;
     }
 }
